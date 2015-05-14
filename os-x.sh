@@ -34,9 +34,6 @@ defaults write com.apple.BezelServices kDimTime -int 10
 # Don't create .DS_Store files on network drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
-# TODO: set default browser
-# TODO: three finger drag
-
 for app in "SystemUIServer"; do
   killall "$app" > /dev/null 2>&1
 done
@@ -51,8 +48,6 @@ read
 
 echo "Set user avatar"
 read
-
-echo "Setup signatures in Mail.app"
 
 # Prevent error from having too many files open
 launchctl limit maxfiles 2048 2048
