@@ -1,9 +1,6 @@
 # Stop if something fails
 set -e
 
-# Different location because there is no Dropbox yet.
-source "lib/colours.sh"
-
 # Ensure we start in the user's home directory
 cd ~
 
