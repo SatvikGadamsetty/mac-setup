@@ -1,6 +1,3 @@
-# Stop if something fails
-set -e
-
 # Ensure we start in the user's home directory
 cd ~
 
@@ -8,22 +5,22 @@ cd ~
 # Core Installations
 #
 
-echo -e "${green}Installing core${plain}"
+echo -e "Installing core"
 
 sudo xcode-select --install
 
-java
-
 # Install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # homebrew-cask apps directory
 sudo mkdir /opt
+
 # Hide it!
 sudo chflags hidden /opt
 
 # Install homebrew-cask for easily installing application binaries
 brew tap caskroom/cask
+
 # Betas, etc
 brew tap caskroom/versions
 brew install brew-cask
@@ -35,12 +32,6 @@ read
 brew cask install alfred
 echo "Open Alfred Preferences and set sync folder to ~/Dropbox/Preferences/Alfred"
 read
-echo "Configure Cmd+Space shortcut"
-read
-
-brew cask alfred link
-echo "Check that linking Alfred worked. If not, DIY."
-read
 
 brew cask install sublime-text3
 
@@ -49,8 +40,6 @@ echo "Open Chrome and set up accounts for syncing + extensions."
 read
 
 brew cask install google-chrome-canary
-read
-
 brew cask install iterm2-nightly
 
 brew install git
@@ -67,7 +56,7 @@ wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - 
 # Sublime Text settings
 #
 
-echo -e "${green}Setting up Sublime Text${plain}"
+echo -e "Setting up Sublime Text"
 
 echo "Open Sublime Text to create initial library files."
 read
@@ -75,7 +64,7 @@ read
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 
 trash ./User
-git clone git@github.com:hollandben/sublime-text-settings ./User
+git clone git@github.com:hollandben/sublime-settings ./User
 
 echo "Install Package Control: https://sublime.wbond.net/installation"
 read
@@ -86,13 +75,13 @@ cd -
 # Additional Installations
 #
 
-npm install -g gulp bower grunt-cli
+echo "Installing global npm packages"
+npm install -g gulp bower grunt-cli jshint jscs
 
-brew cask install virtualbox422492790
-echo "Change VirtualBox’ VMs folder to removable drive"
-read
+echo "Install VirtualBox"
+brew cask install virtualbox
 
 echo "Download VMs from http://dev.modern.ie/tools/vms/"
 read
 
-echo "All done... enjoy!!"
+echo "All done"

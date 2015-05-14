@@ -39,15 +39,5 @@ for app in "SystemUIServer"; do
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
 
-#
-# Manual
-#
-
-echo "Disable guest account"
-read
-
-echo "Set user avatar"
-read
-
 # Prevent error from having too many files open
 launchctl limit maxfiles 2048 2048
